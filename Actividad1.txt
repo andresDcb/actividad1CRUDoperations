@@ -1,0 +1,117 @@
+MongoDB shell version v4.2.25
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("9483cdb0-4e3e-49c0-86c0-2e5a8115d7df") }
+MongoDB server version: 4.2.25
+Server has startup warnings:
+2024-10-16T09:01:10.523-0500 I  CONTROL  [initandlisten]
+2024-10-16T09:01:10.523-0500 I  CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2024-10-16T09:01:10.523-0500 I  CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2024-10-16T09:01:10.523-0500 I  CONTROL  [initandlisten]
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+
+use torneoDeportivoBrakeDance
+
+---
+
+> show dbs;
+Automoviles                0.000GB
+admin                      0.000GB
+config                     0.000GB
+local                      0.000GB
+torneoDeportivo            0.000GB
+torneoDeportivoBrakeDance  0.000GB
+> use torneoDeportivoBrakeDance
+switched to db torneoDeportivoBrakeDance
+>db.deportistasMasculinos.insertMany([{nombre : "J Attack",país: "Australia"},{nombre: "Phill Wizard",país : "Canada"},{nombre :"Dani Dann",país: "Francia"},{nombre: "Hiro 10",país: "Japón"},{nombre: "Billy ",país: "Marruecos"},{nombre: "Little ing ",país: "República popular de china"}])
+>db.deportistasFemeninas.insertMany([{nombre : "Raygun",país: "Australia"},{nombre: "Sunny",país : " Estados unidos"},{nombre :"Carlota",país: "Francia"},{nombre: "Ayumi",país: "Japón"},{nombre: "Nicka ",país: "Lituania"},{nombre: "Stefani ",país: "Ucrania"}])
+> show collections;
+batallasMasculinas
+deportistasFemeninas
+deportistasMasculinos
+jueces
+> db.batallasFemeninas.insertOne({_id:4,BreakerRoja:"Raygun",BrakerAzul:"Sunny",jueces:["Moy","MGbility",ganadora:""]})
+2024-11-17T14:01:28.722-0500 E  QUERY    [js] uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:111
+> db.batallasFemeninas.insertOne({_id:4,BreakerRoja:"Raygun",BrakerAzul:"Sunny",jueces:["Moy","MGbility"],ganadora:""})
+{ "acknowledged" : true, "insertedId" : 4 }
+>  db.batallasFemeninas.insertOne({_id:5,BreakerRoja:"Carlota",BrakerAzul:"Ayumi",jueces:["Jess","Migaz"],ganadora:""})
+{ "acknowledged" : true, "insertedId" : 5 }
+> db.batallasFemeninas.insertOne({_id:6,BreakerRoja:"Nicka",BrakerAzul:"Ayumi",jueces:["MGbility","Moy"],ganadora:""})
+{ "acknowledged" : true, "insertedId" : 6 }
+> db.batallasFemeninas.find();
+{ "_id" : 4, "BreakerRoja" : "Raygun", "BrakerAzul" : "Sunny", "jueces" : [ "Moy", "MGbility" ], "ganadora" : "" }
+{ "_id" : 5, "BreakerRoja" : "Carlota", "BrakerAzul" : "Ayumi", "jueces" : [ "Jess", "Migaz" ], "ganadora" : "" }
+{ db.criteriosPuntuacion.instertOnedb.criteriosPuntuacion.insterOne({BrakerRojo:"",BakerAzul:"",sumpuntosRojo: 0,sumpuntosAzul:0,puntajeMayor:0,ganadorPorPuntaje : "
+> db.criteriosPuntuacion.insertOne({BrakerRojo:"",BrakerAzul:"",sumpuntosRojo:0,sumpuntosAzul:0,ganadorMatch:""})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("673a424a4a005ecc335c38e1")
+}
+> show collections;
+batallasFemeninas
+batallasMasculinas
+criteriosPuntuacion
+deportistasFemeninas
+deportistasMasculinos
+jueces
+> db.batallasFemeninas.find();
+{ "_id" : 4, "BreakerRoja" : "Raygun", "BrakerAzul" : "Sunny", "jueces" : [ "Moy", "MGbility" ], "ganadora" : "" }
+{ "_id" : 5, "BreakerRoja" : "Carlota", "BrakerAzul" : "Ayumi", "jueces" : [ "Jess", "Migaz" ], "ganadora" : "" }
+{ "_id" : 6, "BreakerRoja" : "Nicka", "BrakerAzul" : "Ayumi", "jueces" : [ "MGbility", "Moy" ], "ganadora" : "" }
+> db.batallasMasculinas.find();
+{ "_id" : 1, "BrakerRojo" : "J Attack", "BrakerAzul" : "Hiro 10", "jueces" : [ "Migaz", "MGbility" ], "ganador" : "" }
+{ "_id" : 2, "BrakerRojo" : "Dany Dann", "BrakerAzul" : "Billy", "jueces" : [ "Jess", "Moy" ], "ganador" : "" }
+{ "_id" : 3, "BrakerRojo" : "Phill Wizard", "BrakerAzul" : "J Attack", "jueces" : [ "Jess", "MGbility" ], "ganador" : "" }
+> db.deportistasMasculinos.find();
+{ "_id" : ObjectId("673a24e85c93157882c4da59"), "nombre" : "J Attack", "pais" : "Australia" }
+{ "_id" : ObjectId("673a28f0ef2e1b6822c91b6f"), "nombre" : "Dany Dann", "pais" : "Francia" }
+{ "_id" : ObjectId("673a2b2cef2e1b6822c91b70"), "nombre" : "Phill Wizard", "pais" : "Canada" }
+{ "_id" : ObjectId("673a2b2cef2e1b6822c91b71"), "nombre" : "Hiro 10", "pais" : "Japón" }
+{ "_id" : ObjectId("673a2bfaef2e1b6822c91b72"), "nombre" : "Billy", "pais" : "Marruecos" }
+{ "_id" : ObjectId("673a2bfaef2e1b6822c91b73"), "nombre" : "Little ing", "pais" : "República popular de china" }
+> db.deportistasFemeninos.find();
+> db.deportistasFeeninas.find();
+> db.deportistasFemeninas.find();
+{ "_id" : ObjectId("673a2dd0ef2e1b6822c91b74"), "nombre" : "Raygun", "país" : "Australia" }
+{ "_id" : ObjectId("673a2dd0ef2e1b6822c91b75"), "nombre" : "Sunny", "país" : " Estados unidos" }
+{ "_id" : ObjectId("673a2dd0ef2e1b6822c91b76"), "nombre" : "Carlota", "país" : "Francia" }
+{ "_id" : ObjectId("673a2dd0ef2e1b6822c91b77"), "nombre" : "Ayumi", "país" : "Japón" }
+{ "_id" : ObjectId("673a2dd0ef2e1b6822c91b78"), "nombre" : "Nicka ", "país" : "Lituania" }
+{ "_id" : ObjectId("673a2dd0ef2e1b6822c91b79"), "nombre" : "Stefani ", "país" : "Ucrania" }
+> db.jueces.find();
+{ "_id" : ObjectId("673a3074ef2e1b6822c91b7a"), "nombre" : "MGbility", "país" : "Slovakia" }
+{ "_id" : ObjectId("673a3074ef2e1b6822c91b7b"), "nombre" : "Migaz", "país" : "Brazil" }
+{ "_id" : ObjectId("673a3074ef2e1b6822c91b7c"), "nombre" : "Jess", "país" : "España" }
+{ "_id" : ObjectId("673a3074ef2e1b6822c91b7d"), "nombre" : "Moy ", "país" : "Estados Unidos" }
+> db.criteriosPuntuacion.find();
+{ "_id" : ObjectId("673a424a4a005ecc335c38e1"), "BrakerRojo" : "", "BrakerAzul" : "", "sumpuntosRojo" : 0, "sumpuntosAzul" : 0, "ganadorMatch" : ""}
+> db.batallasMasculinas.updateOne({_id:{$eq:1}},{ $set : {ganador:"J Attack"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.batallasMasculinas.find();
+{ "_id" : 1, "BrakerRojo" : "J Attack", "BrakerAzul" : "Hiro 10", "jueces" : [ "Migaz", "MGbility" ], "ganador" : "J Attack" }
+{ "_id" : 2, "BrakerRojo" : "Dany Dann", "BrakerAzul" : "Billy", "jueces" : [ "Jess", "Moy" ], "ganador" : "" }
+{ "_id" : 3, "BrakerRojo" : "Phill Wizard", "BrakerAzul" : "J Attack", "jueces" : [ "Jess", "MGbility" ], "ganador" : "" }
+> db.batallasFemeninas.updateOne({_id:{$eq:4}},{$set:{ganadora: "Sunny"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.batallasFemeninas.find();
+{ "_id" : 4, "BreakerRoja" : "Raygun", "BrakerAzul" : "Sunny", "jueces" : [ "Moy", "MGbility" ], "ganadora" : "Sunny" }
+{ "_id" : 5, "BreakerRoja" : "Carlota", "BrakerAzul" : "Ayumi", "jueces" : [ "Jess", "Migaz" ], "ganadora" : "" }
+> db.criteriosPuntuacion.updateOne({BrakerRojo:{$eq :""}},{$set :{sumpuntosRojo : 80} })
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.criteriosPuntuacion.find();
+{ "_id" : ObjectId("673a424a4a005ecc335c38e1"), "BrakerRojo" : "", "BrakerAzul" : "", "sumpuntosRojo" : 80, "sumpuntosAzul" : 0, "ganadorMatch" : "" }
+> db.batallasFemeninas.updateOne({_id : {$eq : 6}},{$unset : {BrakerRojo :""}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 0 }
+> db.batallasFemeninas.find();
+{ "_id" : 4, "BreakerRoja" : "Raygun", "BrakerAzul" : "Sunny", "jueces" : [ "Moy", "MGbility" ], "ganadora" : "Sunny" }
+{ "_id" : 5, "BreakerRoja" : "Carlota", "BrakerAzul" : "Ayumi", "jueces" : [ "Jess", "Migaz" ], "ganadora" : "" }
+{ "_id" : 6, "BrakerAzul" : "Ayumi", "jueces" : [ "MGbility", "Moy" ], "ganadora" : "" }
